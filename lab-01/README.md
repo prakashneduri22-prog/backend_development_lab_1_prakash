@@ -166,7 +166,7 @@ Available Endpoints:
 ### Option 1: Deploy to Render (Recommended & Free)
 1. Push your repository to GitHub.
 2. Visit [Render.com](https://render.com) and click **New +** -> **Web Service**.
-3. Connect your GitHub repository `prakash-neduri`.
+3. Connect your GitHub repository `backend_development_lab_1_prakash`.
 4. Configure service settings:
    - **Root Directory:** `lab-01`
    - **Runtime:** `Node`
@@ -176,7 +176,7 @@ Available Endpoints:
 
 ### Option 2: Deploy to Railway
 1. Visit [Railway.app](https://railway.app) and select **New Project** -> **Deploy from GitHub repo**.
-2. Select repository `prakash-neduri`.
+2. Select repository `backend_development_lab_1_prakash`.
 3. In settings, set the **Root Directory** to `/lab-01`.
 4. Railway will automatically detect `npm start` and assign a public domain.
 

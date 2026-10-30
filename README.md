@@ -5,7 +5,7 @@
 **Section:** Section A  
 **Course:** Backend Development Fundamentals · Year II Term II · Aurora  
 **Faculty:** Joel Prashanth D  
-**GitHub Repository:** `prakash-neduri`
+**GitHub Repository:** [`backend_development_lab_1_prakash`](https://github.com/prakashneduri22-prog/backend_development_lab_1_prakash)
 
 ---
 
