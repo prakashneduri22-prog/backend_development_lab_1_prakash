@@ -5,7 +5,7 @@
 const express = require('express');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 // Logging middleware to log incoming requests and the returned HTTP status code
 app.use((req, res, next) => {
@@ -50,8 +50,8 @@ app.use((req, res) => {
   });
 });
 
-// Start the Express server
-app.listen(PORT, () => {
+// Start the Express server on port 3000
+app.listen(3000, () => {
   console.log('====================================================');
   console.log(`Express server is running on port ${PORT}`);
   console.log(`Base URL: http://localhost:${PORT}`);

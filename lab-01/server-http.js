@@ -3,7 +3,7 @@
 
 const http = require('http');
 
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 // Create web server using native http module
 const server = http.createServer((req, res) => {
@@ -15,7 +15,7 @@ const server = http.createServer((req, res) => {
 });
 
 // Listen on port 3000
-server.listen(PORT, () => {
+server.listen(3000, () => {
   console.log(`=========================================`);
   console.log(`Plain HTTP Server running on port ${PORT}`);
   console.log(`URL: http://localhost:${PORT}`);
