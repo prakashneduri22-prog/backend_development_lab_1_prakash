@@ -201,14 +201,14 @@ GET /invalid-path -> Status: 404
 
 ## Notes: Problems Faced and How You Solved Them
 
-1. **Port Conflict When Running Plain HTTP and Express Servers:**
-   - *Problem:* Both `server-http.js` and `server.js` defaulted to port `3000`. Attempting to start both simultaneously caused an `EADDRINUSE: address already in use :::3000` error.
-   - *Solution:* Implemented dynamic port configuration using `process.env.PORT || 3000` and properly terminated the native HTTP process before starting the Express application.
+1. **Port Management for Plain HTTP and Express Servers:**
+   - *Problem:* Both `server-http.js` and `server.js` run on port `3000`. Running them simultaneously leads to an `EADDRINUSE` port conflict.
+   - *Solution:* Ensured each server file is executed individually, stopping the plain HTTP server before starting the Express server.
 
 2. **Ensuring Consistent 404 Catch-All Handling:**
-   - *Problem:* By default, unhandled routes in Express return standard HTML (`Cannot GET /path`).
-   - *Solution:* Placed a custom catch-all middleware (`app.use((req, res) => { ... })`) at the very end of the middleware chain (after all defined routes) to return a clean, structured JSON response with an explicit `404` status code.
+   - *Problem:* Unhandled paths in Express default to plain text/HTML errors.
+   - *Solution:* Added a catch-all handler (`app.use((request, response) => { ... })`) positioned after all routes to return a structured 404 response with an explicit `response.status(404)`.
 
 3. **Status Code Logging Requirement:**
    - *Problem:* The lab requires observing and logging status codes for each visited route.
-   - *Solution:* Added straightforward console logging within each route handler using `(req, res)` to output the method, URL, and returned status code (`200` or `404`) directly to the terminal without requiring intermediate middleware or `next`.
+   - *Solution:* Added console logging inside each route handler (`request`, `response`) to output the route and status code (`200` or `404`) directly to the console using only standard Express request handling.
