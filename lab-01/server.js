@@ -44,14 +44,7 @@ app.use((request, response) => {
 
 // Start the Express server on port 3000
 app.listen(3000, () => {
-  console.log('====================================================');
-  console.log('Express server is running on port 3000');
   console.log('Server Running at http://localhost:3000/');
-  console.log('Available Endpoints:');
-  console.log(' - GET  /       (Welcome text)');
-  console.log(' - GET  /about  (JSON with student name and section)');
-  console.log(' - GET  /time   (Current date & time using new Date())');
-  console.log('====================================================');
 });
 
 module.exports = app;

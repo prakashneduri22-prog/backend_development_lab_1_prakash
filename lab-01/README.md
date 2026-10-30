@@ -108,17 +108,10 @@ When running `npm init -y`, npm generates a `package.json` file. Each field serv
 
 ## Terminal Execution & Status Code Logs
 
-Every route visited logs the route path and returned status code directly to the terminal console using the `(req, res)` route handlers:
+Every route visited logs the route path and returned status code directly to the terminal console:
 
 ```text
-====================================================
-Express server is running on port 3000
-Base URL: http://localhost:3000
-Available Endpoints:
- - GET  /       (Welcome text)
- - GET  /about  (JSON with student name and section)
- - GET  /time   (Current date & time using new Date())
-====================================================
+Server Running at http://localhost:3000/
 GET / -> Status: 200
 GET /about -> Status: 200
 GET /time -> Status: 200
