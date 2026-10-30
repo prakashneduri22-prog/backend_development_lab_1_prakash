@@ -1,10 +1,10 @@
 # Backend Development Fundamentals — Course Labs
 
 **Student Name:** Prakash Neduri  
-**Registration Number:** 22BCE10001  
-**Section:** Section A  
+**Registration Number:** 252U1R1168 
+**Section:** SCSE-2D 
 **Course:** Backend Development Fundamentals · Year II Term II · Aurora  
-**Faculty:** Joel Prashanth D  
+**Faculty:** SAI SIVA TEJA 
 **GitHub Repository:** [`backend_development_lab_1_prakash`](https://github.com/prakashneduri22-prog/backend_development_lab_1_prakash)
 
 ---
