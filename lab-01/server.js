@@ -12,8 +12,8 @@ app.get('/about', (req, res) => {
     console.log('GET /about -> Status: 200');
     res.send({
         name: 'Prakash Neduri',
-        regNo: '22BCE10001',
-        section: 'Section A'
+        regNo: '252U1R1168',
+        section: 'CSE-1D'
     });
 });
 
