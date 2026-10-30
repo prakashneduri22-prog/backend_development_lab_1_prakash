@@ -108,7 +108,7 @@ When running `npm init -y`, npm generates a `package.json` file. Each field serv
 
 ## Terminal Execution & Status Code Logs
 
-Every request received by the server is intercepted by logging middleware and logs the HTTP method, endpoint URL, response status code, and latency in milliseconds.
+Every route visited logs the route path and returned status code directly to the terminal console using the `(req, res)` route handlers:
 
 ```text
 ====================================================
@@ -119,10 +119,10 @@ Available Endpoints:
  - GET  /about  (JSON with student name and section)
  - GET  /time   (Current date & time using new Date())
 ====================================================
-[2026-10-30T05:44:11.519Z] GET / -> Status: 200 (10ms)
-[2026-10-30T05:44:11.568Z] GET /about -> Status: 200 (2ms)
-[2026-10-30T05:44:11.618Z] GET /time -> Status: 200 (1ms)
-[2026-10-30T05:44:11.664Z] GET /invalid-path -> Status: 404 (1ms)
+GET / -> Status: 200
+GET /about -> Status: 200
+GET /time -> Status: 200
+GET /invalid-path -> Status: 404
 ```
 
 ---
@@ -211,4 +211,4 @@ Available Endpoints:
 
 3. **Status Code Logging Requirement:**
    - *Problem:* The lab requires observing and logging status codes for each visited route.
-   - *Solution:* Built a custom middleware that hooks into Node's `res.on('finish')` event to log the exact status code (`200`, `404`) and execution time as each response is completed and dispatched to the browser.
+   - *Solution:* Added straightforward console logging within each route handler using `(req, res)` to output the method, URL, and returned status code (`200` or `404`) directly to the terminal without requiring intermediate middleware or `next`.

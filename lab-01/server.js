@@ -7,23 +7,15 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-// Logging middleware to log incoming requests and the returned HTTP status code
-app.use((req, res, next) => {
-  const startTime = Date.now();
-  res.on('finish', () => {
-    const elapsed = Date.now() - startTime;
-    console.log(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl} -> Status: ${res.statusCode} (${elapsed}ms)`);
-  });
-  next();
-});
-
 // Route 1: GET / (Welcome text)
 app.get('/', (req, res) => {
+  console.log('GET / -> Status: 200');
   res.status(200).send('Welcome to Lab 1: Node.js and Express Server - Prakash Neduri');
 });
 
 // Route 2: GET /about (JSON with name, registration number, and section)
 app.get('/about', (req, res) => {
+  console.log('GET /about -> Status: 200');
   res.status(200).json({
     name: 'Prakash Neduri',
     registrationNumber: '22BCE10001',
@@ -33,6 +25,7 @@ app.get('/about', (req, res) => {
 
 // Route 3: GET /time (Current date and time using new Date())
 app.get('/time', (req, res) => {
+  console.log('GET /time -> Status: 200');
   const now = new Date();
   res.status(200).json({
     currentTime: now.toISOString(),
@@ -41,12 +34,13 @@ app.get('/time', (req, res) => {
   });
 });
 
-// 404 Handler: Catch-all route for any undefined or unknown paths
+// 404 Handler: Catch-all for any unknown path
 app.use((req, res) => {
+  console.log(`GET ${req.url} -> Status: 404`);
   res.status(404).json({
     status: 404,
     error: 'Not Found',
-    message: `Cannot ${req.method} ${req.originalUrl} - The requested route does not exist.`
+    message: `Cannot ${req.method} ${req.url} - The requested route does not exist.`
   });
 });
 
@@ -56,9 +50,9 @@ app.listen(3000, () => {
   console.log(`Express server is running on port ${PORT}`);
   console.log(`Base URL: http://localhost:${PORT}`);
   console.log('Available Endpoints:');
-  console.log(` - GET  /       (Welcome text)`);
-  console.log(` - GET  /about  (JSON with student name and section)`);
-  console.log(` - GET  /time   (Current date & time using new Date())`);
+  console.log(' - GET  /       (Welcome text)');
+  console.log(' - GET  /about  (JSON with student name and section)');
+  console.log(' - GET  /time   (Current date & time using new Date())');
   console.log('====================================================');
 });
 
