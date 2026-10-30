@@ -3,7 +3,7 @@
 **Prakash Neduri · 22BCE10001 · Section A**  
 **Course:** Backend Development Fundamentals · Year II Term II · Aurora  
 **Faculty:** Joel Prashanth D  
-**Live Link:** [[https://lab-01-express-server.onrender.com](https://backend-development-lab-1-prakash-c.vercel.app/)] 
+**Live Link:** [[https://backend-development-lab-1-prakash-c.vercel.app/](https://backend-development-lab-1-prakash-c.vercel.app/)] 
 
 ---
 
