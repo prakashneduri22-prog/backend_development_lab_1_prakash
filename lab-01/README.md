@@ -100,9 +100,9 @@ When running `npm init -y`, npm generates a `package.json` file. Each field serv
 | HTTP Method | Route / Path | Response Format | Status Code | One-line Description |
 | :--- | :--- | :--- | :--- | :--- |
 | `GET` | `/` | Text / HTML | `200 OK` | Returns a friendly welcome message. |
-| `GET` | `/about` | JSON | `200 OK` | Returns student details (name, registration number, section). |
+| `GET` | `/about` | JSON | `200 OK` | Returns student details (name, regNo, section). |
 | `GET` | `/time` | JSON | `200 OK` | Returns current server date and time using `new Date()`. |
-| `GET` / `ALL` | `*` (Any undefined route) | JSON | `404 Not Found` | Catch-all handler returning a structured 404 error message. |
+| `GET` / `ALL` | `*` (Any undefined route) | Text / HTML | `404 Not Found` | Catch-all handler returning 'Page Not Found'. |
 
 ---
 
@@ -111,7 +111,7 @@ When running `npm init -y`, npm generates a `package.json` file. Each field serv
 Every route visited logs the route path and returned status code directly to the terminal console:
 
 ```text
-Server Running at http://localhost:3000/
+Server running at http://localhost:3000
 GET / -> Status: 200
 GET /about -> Status: 200
 GET /time -> Status: 200
