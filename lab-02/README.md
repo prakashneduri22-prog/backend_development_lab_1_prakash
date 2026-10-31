@@ -191,7 +191,7 @@ GET /books/11/ -> Status: 404 (Not Found)
 ## Screenshots
 
 ### 1. GET /books/ (All Books)
-- **Endpoint:** `GET http://localhost:3000/books/`
+- **Endpoint:** `GET https://backend-development-lab-1-prakash-d.vercel.app/books/` *(or `http://localhost:3000/books/`)*
 - **Status Code:** `200 OK`
 - **Description:** Returns JSON array containing all book records in the database.
 
@@ -200,7 +200,7 @@ GET /books/11/ -> Status: 404 (Not Found)
 ---
 
 ### 2. GET /books/:bookId/ (Single Book)
-- **Endpoint:** `GET http://localhost:3000/books/1/`
+- **Endpoint:** `GET https://backend-development-lab-1-prakash-d.vercel.app/books/1/` *(or `http://localhost:3000/books/1/`)*
 - **Status Code:** `200 OK`
 - **Description:** Returns details of the book matching the requested `bookId`.
 
@@ -209,7 +209,7 @@ GET /books/11/ -> Status: 404 (Not Found)
 ---
 
 ### 3. POST /books/ (Add Book)
-- **Endpoint:** `POST http://localhost:3000/books/`
+- **Endpoint:** `POST https://backend-development-lab-1-prakash-d.vercel.app/books/` *(or `http://localhost:3000/books/`)*
 - **Status Code:** `201 Created`
 - **Description:** Inserts a new book into SQLite and returns the generated `bookId`.
 
@@ -218,7 +218,7 @@ GET /books/11/ -> Status: 404 (Not Found)
 ---
 
 ### 4. PUT /books/:bookId/ (Update Book)
-- **Endpoint:** `PUT http://localhost:3000/books/11/`
+- **Endpoint:** `PUT https://backend-development-lab-1-prakash-d.vercel.app/books/11/` *(or `http://localhost:3000/books/11/`)*
 - **Status Code:** `200 OK`
 - **Description:** Updates the book's title, price, or pages in SQLite using parameterized queries.
 
@@ -227,7 +227,7 @@ GET /books/11/ -> Status: 404 (Not Found)
 ---
 
 ### 5. DELETE /books/:bookId/ (Remove Book)
-- **Endpoint:** `DELETE http://localhost:3000/books/11/`
+- **Endpoint:** `DELETE https://backend-development-lab-1-prakash-d.vercel.app/books/11/` *(or `http://localhost:3000/books/11/`)*
 - **Status Code:** `200 OK`
 - **Description:** Permanently removes the book record from the SQLite database.
 
@@ -236,7 +236,7 @@ GET /books/11/ -> Status: 404 (Not Found)
 ---
 
 ### 6. GET /books/:bookId/ (404 Error Handling)
-- **Endpoint:** `GET http://localhost:3000/books/999/`
+- **Endpoint:** `GET https://backend-development-lab-1-prakash-d.vercel.app/books/999/` *(or `http://localhost:3000/books/999/`)*
 - **Status Code:** `404 Not Found`
 - **Description:** Returns an informative JSON error message when requesting an ID that does not exist.
 
