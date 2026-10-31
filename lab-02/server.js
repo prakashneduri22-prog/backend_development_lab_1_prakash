@@ -1,21 +1,56 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const { open } = require('sqlite');
 const sqlite3 = require('sqlite3');
 
 const app = express();
 app.use(express.json());
 
-const dbPath = path.join(__dirname, 'books.db');
+// Database path configuration (supports standard local execution and Vercel serverless /tmp)
+let dbPath = path.join(__dirname, 'books.db');
+
+if (process.env.VERCEL) {
+  const tmpDbPath = path.join('/tmp', 'books.db');
+  if (!fs.existsSync(tmpDbPath)) {
+    try {
+      fs.copyFileSync(dbPath, tmpDbPath);
+      console.log('Copied books.db to /tmp/books.db for serverless execution');
+    } catch (err) {
+      console.error('Failed to copy books.db to /tmp:', err.message);
+    }
+  }
+  dbPath = tmpDbPath;
+}
+
 let db = null;
 
-// Initialize SQLite Database and start Express Server
-const initializeDBAndServer = async () => {
-  try {
+// Helper to guarantee active DB connection across cold starts & serverless invocations
+const getDbConnection = async () => {
+  if (!db) {
     db = await open({
       filename: dbPath,
       driver: sqlite3.Database
     });
+  }
+  return db;
+};
+
+// Middleware to ensure DB connection is ready before processing any request
+app.use(async (request, response, next) => {
+  try {
+    await getDbConnection();
+    next();
+  } catch (error) {
+    console.error(`DB Connection Error: ${error.message}`);
+    response.status(500).json({ error: `Database Connection Failed: ${error.message}` });
+  }
+});
+
+// Initialize SQLite Database and start Express Server (used in local development)
+const initializeDBAndServer = async () => {
+  try {
+    await getDbConnection();
     const PORT = process.env.PORT || 3000;
     app.listen(PORT, () => {
       console.log(`Server running at http://localhost:${PORT}`);
@@ -26,7 +61,10 @@ const initializeDBAndServer = async () => {
   }
 };
 
-initializeDBAndServer();
+// In local mode start listener; on Vercel the exported app handles requests
+if (!process.env.VERCEL) {
+  initializeDBAndServer();
+}
 
 // Root route - Overview of available endpoints
 app.get('/', (request, response) => {
