@@ -15,7 +15,6 @@ if (process.env.VERCEL) {
   if (!fs.existsSync(tmpDbPath)) {
     try {
       fs.copyFileSync(dbPath, tmpDbPath);
-      console.log('Copied books.db to /tmp/books.db for serverless execution');
     } catch (err) {
       console.error('Failed to copy books.db to /tmp:', err.message);
     }
@@ -68,7 +67,6 @@ if (!process.env.VERCEL) {
 
 // Root route - Overview of available endpoints
 app.get('/', (request, response) => {
-  console.log('GET / -> Status: 200');
   response.status(200).json({
     lab: 'Lab 2: SQLite database and CRUD routes',
     student: 'Prakash Neduri',
@@ -92,7 +90,6 @@ app.get(['/books', '/books/'], async (request, response) => {
       SELECT * FROM book ORDER BY id;
     `;
     const books = await db.all(getBooksQuery);
-    console.log(`GET /books/ -> Status: 200 (${books.length} records returned)`);
     response.status(200).json(books);
   } catch (error) {
     console.error(`GET /books/ error: ${error.message}`);
@@ -110,11 +107,9 @@ app.get(['/books/:bookId', '/books/:bookId/'], async (request, response) => {
     const book = await db.get(getBookQuery, [bookId]);
 
     if (!book) {
-      console.log(`GET /books/${bookId}/ -> Status: 404 (Not Found)`);
       return response.status(404).json({ error: `Book with id ${bookId} not found` });
     }
 
-    console.log(`GET /books/${bookId}/ -> Status: 200`);
     response.status(200).json(book);
   } catch (error) {
     console.error(`GET /books/:bookId error: ${error.message}`);
@@ -128,7 +123,6 @@ app.post(['/books', '/books/'], async (request, response) => {
     const { title, author, price, pages } = request.body;
 
     if (!title || !author || price === undefined || pages === undefined) {
-      console.log('POST /books/ -> Status: 400 (Bad Request - Missing Fields)');
       return response.status(400).json({
         error: 'title, author, price, and pages are required fields'
       });
@@ -141,7 +135,6 @@ app.post(['/books', '/books/'], async (request, response) => {
     const dbResponse = await db.run(addBookQuery, [title, author, price, pages]);
     const bookId = dbResponse.lastID;
 
-    console.log(`POST /books/ -> Status: 201 (Book Added with ID ${bookId})`);
     response.status(201).json({
       message: 'Book Added Successfully',
       bookId: bookId
@@ -161,7 +154,6 @@ app.put(['/books/:bookId', '/books/:bookId/'], async (request, response) => {
     // Check if book exists first
     const existingBook = await db.get('SELECT * FROM book WHERE id = ?;', [bookId]);
     if (!existingBook) {
-      console.log(`PUT /books/${bookId}/ -> Status: 404 (Not Found)`);
       return response.status(404).json({ error: `Book with id ${bookId} not found` });
     }
 
@@ -177,7 +169,6 @@ app.put(['/books/:bookId', '/books/:bookId/'], async (request, response) => {
     `;
     await db.run(updateBookQuery, [updatedTitle, updatedAuthor, updatedPrice, updatedPages, bookId]);
 
-    console.log(`PUT /books/${bookId}/ -> Status: 200 (Updated)`);
     response.status(200).json({
       message: 'Book Details Updated Successfully',
       bookId: parseInt(bookId, 10)
@@ -195,7 +186,6 @@ app.delete(['/books/:bookId', '/books/:bookId/'], async (request, response) => {
 
     const existingBook = await db.get('SELECT * FROM book WHERE id = ?;', [bookId]);
     if (!existingBook) {
-      console.log(`DELETE /books/${bookId}/ -> Status: 404 (Not Found)`);
       return response.status(404).json({ error: `Book with id ${bookId} not found` });
     }
 
@@ -204,7 +194,6 @@ app.delete(['/books/:bookId', '/books/:bookId/'], async (request, response) => {
     `;
     await db.run(deleteBookQuery, [bookId]);
 
-    console.log(`DELETE /books/${bookId}/ -> Status: 200 (Deleted)`);
     response.status(200).json({
       message: 'Book Deleted Successfully',
       bookId: parseInt(bookId, 10)
@@ -217,7 +206,6 @@ app.delete(['/books/:bookId', '/books/:bookId/'], async (request, response) => {
 
 // 404 Catch-All Handler
 app.use((request, response) => {
-  console.log(`GET ${request.originalUrl} -> Status: 404`);
   response.status(404).json({ error: 'Endpoint Not Found' });
 });
 
