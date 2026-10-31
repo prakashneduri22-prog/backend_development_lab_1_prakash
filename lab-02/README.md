@@ -1,8 +1,8 @@
 # Lab 2: SQLite database and CRUD routes
 
-**Prakash Neduri · 22BCE10001 · Section A**  
+**Prakash Neduri · 252U1R1168 · SCSE-2D**  
 **Course:** Backend Development Fundamentals · Year II Term II · Aurora  
-**Faculty:** Joel Prashanth D  
+**Faculty:** Sai Siva Teja  
 **Live Link:** [https://lab-02-sqlite-crud.onrender.com](https://lab-02-sqlite-crud.onrender.com) *(Replace with your deployed Render/Railway/Cloud IDE public URL or refer to [Deployment Instructions](#deployment-instructions))*
 
 ---

@@ -1,9 +1,9 @@
 # Lab 1: Node.js and Express server
 
-**Prakash Neduri · 22BCE10001 · Section A**  
+**Prakash Neduri · 252U1R1168 · SCSE-2D**  
 **Course:** Backend Development Fundamentals · Year II Term II · Aurora  
-**Faculty:** Joel Prashanth D  
-**Live Link:** [[https://backend-development-lab-1-prakash-c.vercel.app/](https://backend-development-lab-1-prakash-c.vercel.app/)] 
+**Faculty:** Sai Siva Teja  
+**Live Link:** [https://backend-development-lab-1-prakash-c.vercel.app/](https://backend-development-lab-1-prakash-c.vercel.app/)
 
 ---
 

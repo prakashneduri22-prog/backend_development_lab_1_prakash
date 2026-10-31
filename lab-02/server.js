@@ -34,8 +34,9 @@ app.get('/', (request, response) => {
   response.status(200).json({
     lab: 'Lab 2: SQLite database and CRUD routes',
     student: 'Prakash Neduri',
-    regNo: '22BCE10001',
-    section: 'Section A',
+    regNo: '252U1R1168',
+    section: 'SCSE-2D',
+    faculty: 'Sai Siva Teja',
     endpoints: [
       { method: 'GET', path: '/books/', description: 'Retrieve all books from the database' },
       { method: 'GET', path: '/books/:bookId/', description: 'Retrieve a specific book by ID' },
