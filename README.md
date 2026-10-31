@@ -14,7 +14,7 @@
 | Lab Folder | Title | Status | Link |
 | :--- | :--- | :--- | :--- |
 | **`lab-01/`** | **Node.js and Express Server** | Completed | [lab-01/README.md](./lab-01/README.md) |
-| `lab-02/` | Lab 2: Routing & Middleware | Upcoming | `lab-02/` |
+| **`lab-02/`** | **SQLite Database and CRUD Routes** | Completed | [lab-02/README.md](./lab-02/README.md) |
 | `lab-03/` | Lab 3: RESTful APIs | Upcoming | `lab-03/` |
 | `lab-04/` | Lab 4: Data Validation & Error Handling | Upcoming | `lab-04/` |
 | `lab-05/` | Lab 5: Database Integration | Upcoming | `lab-05/` |
