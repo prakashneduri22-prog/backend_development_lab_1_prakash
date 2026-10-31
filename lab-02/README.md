@@ -3,7 +3,7 @@
 **Prakash Neduri · 252U1R1168 · SCSE-2D**  
 **Course:** Backend Development Fundamentals · Year II Term II · Aurora  
 **Faculty:** Sai Siva Teja  
-**Live Link:** [[[https://lab-02-sqlite-crud.onrender.com](https://backend-development-lab-1-prakash-d.vercel.app/)](https://backend-development-lab-1-prakash-d.vercel.app/)]([https://lab-02-sqlite-crud.onrender.com](https://backend-development-lab-1-prakash-d.vercel.app/)) 
+**Live Link:** [[(https://backend-development-lab-1-prakash-d.vercel.app/)](https://backend-development-lab-1-prakash-d.vercel.app/)](https://backend-development-lab-1-prakash-d.vercel.app/)
 ---
 
 ## Table of Contents
