@@ -254,25 +254,34 @@ GET /books/11/ -> Status: 404 (Not Found)
 
 ## Deployment Instructions
 
-### Deploying to Render
-1. Push your repository to GitHub.
-2. In [Render Dashboard](https://dashboard.render.com), click **New +** -> **Web Service**.
-3. Select your repository `backend_development_lab_1_prakash`.
-4. Configure service parameters:
+### Option 1: Deploying to Vercel (Recommended)
+1. Ensure the latest code is pushed to your GitHub repository `backend_development_lab_1_prakash`.
+2. Go to [Vercel Dashboard](https://vercel.com/dashboard) and click **Add New...** -> **Project**.
+3. Import your GitHub repository `backend_development_lab_1_prakash`.
+4. In the project configuration screen:
+   - **Project Name:** `backend-development-lab-2-prakash` (or your preferred name)
+   - **Framework Preset:** `Other`
+   - **Root Directory:** Click **Edit** and choose `lab-02`
+5. Click **Deploy**. Vercel will automatically build the project using the preconfigured [`vercel.json`](./vercel.json) and [`api/index.js`](./api/index.js).
+6. Once deployed, copy your `.vercel.app` URL and update the **Live Link** at the top of this README.
+
+*(Note: In Vercel serverless functions, the root filesystem is read-only. `server.js` automatically detects `process.env.VERCEL` and creates a working writable copy of `books.db` inside `/tmp/books.db`, allowing CRUD operations to execute smoothly).*
+
+### Option 2: Deploying to Render
+1. In [Render Dashboard](https://dashboard.render.com), click **New +** -> **Web Service**.
+2. Select your repository `backend_development_lab_1_prakash`.
+3. Configure service parameters:
    - **Root Directory:** `lab-02`
    - **Environment:** `Node`
    - **Build Command:** `npm install && npm run init-db`
    - **Start Command:** `npm start`
-5. Click **Create Web Service**. Once deployed, copy your `.onrender.com` URL and update the **Live Link** at the top of this README.
+4. Click **Create Web Service**.
 
-### Deploying to Railway
+### Option 3: Deploying to Railway
 1. Go to [Railway.app](https://railway.app), choose **New Project** -> **Deploy from GitHub repo**.
 2. Select repository `backend_development_lab_1_prakash`.
 3. In settings, set the **Root Directory** to `/lab-02`.
-4. Add a build command if prompted: `npm install && npm run init-db`.
-5. Railway automatically attaches a public domain.
-
-*(Note: SQLite is a disk-file database; deployed cloud containers with ephemeral filesystems reset on redeploy unless attached to a persistent volume. For this reason, full local Postman screenshots and CLI verification outputs are included above).*
+4. Build command: `npm install && npm run init-db`. Start command: `npm start`.
 
 ---
 
