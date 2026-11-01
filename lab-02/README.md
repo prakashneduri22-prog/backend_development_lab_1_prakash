@@ -192,7 +192,7 @@ GET /books/11/ -> Status: 404 (Not Found)
 
 ### 1. GET /books/ (All Books)
 - **Endpoint:** `GET https://backend-development-lab-1-prakash-d.vercel.app/books/` *(or `http://localhost:3000/books/`)*
-- **Status Code:** `200 OK`
+- **Status Code:** 200 OK
 - **Description:** Returns JSON array containing all book records in the database.
 
 ![GET All Books](screenshots/01_postman_get_all_books.png)
@@ -201,7 +201,7 @@ GET /books/11/ -> Status: 404 (Not Found)
 
 ### 2. GET /books/:bookId/ (Single Book)
 - **Endpoint:** `GET https://backend-development-lab-1-prakash-d.vercel.app/books/1/` *(or `http://localhost:3000/books/1/`)*
-- **Status Code:** `200 OK`
+- **Status Code:** 200 OK
 - **Description:** Returns details of the book matching the requested `bookId`.
 
 ![GET Single Book](screenshots/02_postman_get_single_book.png)
@@ -219,7 +219,7 @@ GET /books/11/ -> Status: 404 (Not Found)
 
 ### 4. PUT /books/:bookId/ (Update Book)
 - **Endpoint:** `PUT https://backend-development-lab-1-prakash-d.vercel.app/books/11/` *(or `http://localhost:3000/books/11/`)*
-- **Status Code:** `200 OK`
+- **Status Code:** 200 OK
 - **Description:** Updates the book's title, price, or pages in SQLite using parameterized queries.
 
 ![PUT Update Book](screenshots/04_postman_put_book.png)
@@ -228,7 +228,7 @@ GET /books/11/ -> Status: 404 (Not Found)
 
 ### 5. DELETE /books/:bookId/ (Remove Book)
 - **Endpoint:** `DELETE https://backend-development-lab-1-prakash-d.vercel.app/books/11/` *(or `http://localhost:3000/books/11/`)*
-- **Status Code:** `200 OK`
+- **Status Code:** 200 OK
 - **Description:** Permanently removes the book record from the SQLite database.
 
 ![DELETE Book](screenshots/05_postman_delete_book.png)
@@ -244,12 +244,12 @@ GET /books/11/ -> Status: 404 (Not Found)
 
 ---
 
-### 7. Vercel Deployment & Root API Verification (`GET /`)
-- **Endpoint:** `GET https://backend-development-lab-1-prakash-d.vercel.app/` *(or `http://localhost:3000/`)*
-- **Status Code:** `200 OK`
-- **Description:** Chrome browser navigating to the live Vercel production deployment, showing project overview, SQLite database status, student details (`252U1R1168`), and full CRUD endpoints list.
+### 7. Vercel Production Dashboard & Deployment Verification
+- **URL:** `https://vercel.com/prakash-neduri/backend-development-lab-1-prakash-d`
+- **Status:** `Production Ready (HTTP 200)`
+- **Description:** Live Vercel Project Dashboard confirming production deployment status (`Ready`), assigned domain (`backend-development-lab-1-prakash-d.vercel.app`), SQLite database initialization (`books.db`), and student metadata (`Prakash Neduri · 252U1R1168 · SCSE-2D · Faculty: Sai Siva Teja`).
 
-![SQLite CLI Verification](screenshots/07_sqlite_cli_verification.png)
+![Vercel Production Dashboard](screenshots/07_sqlite_cli_verification.png)
 
 ---
 
