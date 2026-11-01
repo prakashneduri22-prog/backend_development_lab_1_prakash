@@ -244,8 +244,10 @@ GET /books/11/ -> Status: 404 (Not Found)
 
 ---
 
-### 7. SQLite CLI Verification
-- **Description:** SQLite command line terminal confirming table creation, schema structure, and row verification.
+### 7. Vercel Deployment & Root API Verification (`GET /`)
+- **Endpoint:** `GET https://backend-development-lab-1-prakash-d.vercel.app/` *(or `http://localhost:3000/`)*
+- **Status Code:** `200 OK`
+- **Description:** Chrome browser navigating to the live Vercel production deployment, showing project overview, SQLite database status, student details (`252U1R1168`), and full CRUD endpoints list.
 
 ![SQLite CLI Verification](screenshots/07_sqlite_cli_verification.png)
 
