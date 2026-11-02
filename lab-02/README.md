@@ -236,7 +236,7 @@ GET /books/11/ -> Status: 404 (Not Found)
 ---
 
 ### 6. GET /books/:bookId/ (404 Error Handling)
-- **Endpoint:** `GET https://backend-development-lab-1-prakash-d.vercel.app/books/999/` *(or `http://localhost:3000/books/999/`)*
+- **Endpoint:** `GET https://backend-development-lab-1-prakash-d.vercel.app/books/100/` *(or `http://localhost:3000/books/100/`)*
 - **Status Code:** `404 Not Found`
 - **Description:** Returns an informative JSON error message when requesting an ID that does not exist.
 
