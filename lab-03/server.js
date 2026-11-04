@@ -74,7 +74,7 @@ app.get('/', (request, response) => {
     student: 'Prakash Neduri',
     regNo: '252U1R1168',
     section: 'SCSE-2D',
-    faculty: 'Joel Prashanth D',
+    faculty: 'Siva Sai Teja',
     endpoints: [
       {
         method: 'GET',

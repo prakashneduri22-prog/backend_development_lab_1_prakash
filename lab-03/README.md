@@ -2,9 +2,10 @@
 
 **Prakash Neduri · 252U1R1168 · SCSE-2D**  
 **Course:** Backend Development Fundamentals · Year II Term II · Aurora  
-**Faculty:** Sai Siva Teja  
-**Live Link:** [https://backend-development-lab-1-prakash-d.vercel.app/](https://backend-development-lab-1-prakash-d.vercel.app/)  
-**Postman Collection:** [`postman_collection.json`](./postman_collection.json)  
+**Faculty:** Siva Sai Teja  
+**Live Link:** [https://lab-03-xi.vercel.app/](https://lab-03-xi.vercel.app/)  
+**Postman Collection:** [postman_collection.json](./postman_collection.json)  
+**Debugging Exercise Guide:** [debugging-exercise/DEBUGGING.md](./debugging-exercise/DEBUGGING.md)  
 
 ---
 
@@ -206,7 +207,7 @@ The `POST /books/` and `PUT /books/:bookId/` endpoints enforce validation rules:
 ## Screenshots
 
 ### 1. GET /books/?search_q=Harry (Search with LIKE)
-- **Endpoint:** `GET https://backend-development-lab-1-prakash-d.vercel.app/books/?search_q=Harry`
+- **Endpoint:** `GET https://lab-03-xi.vercel.app/books/?search_q=Harry`
 - **Status Code:** `200 OK`
 - **Description:** Searches books where title contains "Harry" using parameterized SQL `LIKE ?`.
 
@@ -215,7 +216,7 @@ The `POST /books/` and `PUT /books/:bookId/` endpoints enforce validation rules:
 ---
 
 ### 2. GET /books/?order_by=price&order=DESC (Sorting)
-- **Endpoint:** `GET https://backend-development-lab-1-prakash-d.vercel.app/books/?order_by=price&order=DESC`
+- **Endpoint:** `GET https://lab-03-xi.vercel.app/books/?order_by=price&order=DESC`
 - **Status Code:** `200 OK`
 - **Description:** Retrieves books sorted by price in descending order, showing *Clean Code* (₹850) first.
 
@@ -224,7 +225,7 @@ The `POST /books/` and `PUT /books/:bookId/` endpoints enforce validation rules:
 ---
 
 ### 3. GET /books/?min_price=200&max_price=400 (Price Range Filter)
-- **Endpoint:** `GET https://backend-development-lab-1-prakash-d.vercel.app/books/?min_price=200&max_price=400`
+- **Endpoint:** `GET https://lab-03-xi.vercel.app/books/?min_price=200&max_price=400`
 - **Status Code:** `200 OK`
 - **Description:** Filters books with prices between ₹200 and ₹400 using parameterized `price BETWEEN ? AND ?`.
 
@@ -233,7 +234,7 @@ The `POST /books/` and `PUT /books/:bookId/` endpoints enforce validation rules:
 ---
 
 ### 4. GET /books/?limit=3&offset=0 (Pagination)
-- **Endpoint:** `GET https://backend-development-lab-1-prakash-d.vercel.app/books/?limit=3&offset=0`
+- **Endpoint:** `GET https://lab-03-xi.vercel.app/books/?limit=3&offset=0`
 - **Status Code:** `200 OK`
 - **Description:** Returns the first page of results containing exactly 3 book records.
 
@@ -242,7 +243,7 @@ The `POST /books/` and `PUT /books/:bookId/` endpoints enforce validation rules:
 ---
 
 ### 5. POST /books/ Validation Failure: Missing Title (400 Bad Request)
-- **Endpoint:** `POST https://backend-development-lab-1-prakash-d.vercel.app/books/`
+- **Endpoint:** `POST https://lab-03-xi.vercel.app/books/`
 - **Status Code:** `400 Bad Request`
 - **Description:** Rejects payload missing the required `title` field with a descriptive error message.
 
@@ -251,7 +252,7 @@ The `POST /books/` and `PUT /books/:bookId/` endpoints enforce validation rules:
 ---
 
 ### 6. POST /books/ Validation Failure: Non-Numeric Price (400 Bad Request)
-- **Endpoint:** `POST https://backend-development-lab-1-prakash-d.vercel.app/books/`
+- **Endpoint:** `POST https://lab-03-xi.vercel.app/books/`
 - **Status Code:** `400 Bad Request`
 - **Description:** Rejects payload having a non-numeric price (`"free"`) with `400 Bad Request`.
 
@@ -260,7 +261,7 @@ The `POST /books/` and `PUT /books/:bookId/` endpoints enforce validation rules:
 ---
 
 ### 7. POST /books/ Successful Creation (201 Created)
-- **Endpoint:** `POST https://backend-development-lab-1-prakash-d.vercel.app/books/`
+- **Endpoint:** `POST https://lab-03-xi.vercel.app/books/`
 - **Status Code:** `201 Created`
 - **Description:** Inserts a valid new book record and returns generated `bookId: 11`.
 
@@ -269,7 +270,7 @@ The `POST /books/` and `PUT /books/:bookId/` endpoints enforce validation rules:
 ---
 
 ### 8. GET /books/999/ (404 Not Found)
-- **Endpoint:** `GET https://backend-development-lab-1-prakash-d.vercel.app/books/999/`
+- **Endpoint:** `GET https://lab-03-xi.vercel.app/books/999/`
 - **Status Code:** `404 Not Found`
 - **Description:** Returns consistent `{ "message": "Book with id 999 not found" }` error response.
 

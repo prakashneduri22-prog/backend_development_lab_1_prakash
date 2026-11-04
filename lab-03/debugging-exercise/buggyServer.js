@@ -1,6 +1,6 @@
 // ============================================================================
 // Lab 3 Debugging Exercise: Faculty Broken Starter Code (buggyServer.js)
-// Contains 4 deliberate bugs assigned by Faculty (Joel Prashanth D):
+// Contains 4 deliberate bugs assigned by Faculty (Siva Sai Teja):
 // 1. Wrong import path (MODULE_NOT_FOUND)
 // 2. Port conflict without fallback (EADDRINUSE)
 // 3. Table-name typo (SQLITE_ERROR: no such table)

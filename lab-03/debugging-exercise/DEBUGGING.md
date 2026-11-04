@@ -1,7 +1,7 @@
 # Lab 3: Debugging Exercise Report
 
 **Course:** Backend Development Fundamentals · Year II Term II · Aurora  
-**Faculty:** Joel Prashanth D  
+**Faculty:** Siva Sai Teja  
 **Student:** Prakash Neduri · 252U1R1168 · SCSE-2D  
 
 ---
