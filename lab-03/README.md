@@ -2,10 +2,9 @@
 
 **Prakash Neduri · 252U1R1168 · SCSE-2D**  
 **Course:** Backend Development Fundamentals · Year II Term II · Aurora  
-**Faculty:** Joel Prashanth D  
+**Faculty:** Sai Siva Teja  
 **Live Link:** [https://backend-development-lab-1-prakash-d.vercel.app/](https://backend-development-lab-1-prakash-d.vercel.app/)  
 **Postman Collection:** [`postman_collection.json`](./postman_collection.json)  
-**Debugging Exercise Guide:** [`debugging-exercise/DEBUGGING.md`](./debugging-exercise/DEBUGGING.md)  
 
 ---
 
