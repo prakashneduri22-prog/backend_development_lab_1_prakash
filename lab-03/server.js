@@ -7,7 +7,6 @@ const sqlite3 = require('sqlite3');
 const app = express();
 app.use(express.json());
 
-// Database path configuration (supports standard local development and Vercel serverless /tmp)
 let dbPath = path.join(__dirname, 'books.db');
 
 if (process.env.VERCEL) {
@@ -24,7 +23,6 @@ if (process.env.VERCEL) {
 
 let db = null;
 
-// Helper to guarantee active DB connection across cold starts & serverless invocations
 const getDbConnection = async () => {
   if (!db) {
     db = await open({
@@ -35,7 +33,6 @@ const getDbConnection = async () => {
   return db;
 };
 
-// Middleware to ensure DB connection is ready before processing any request
 app.use(async (request, response, next) => {
   try {
     await getDbConnection();
@@ -46,7 +43,6 @@ app.use(async (request, response, next) => {
   }
 });
 
-// Initialize SQLite Database and start Express Server (used in local development)
 const initializeDBAndServer = async () => {
   try {
     await getDbConnection();
@@ -64,10 +60,8 @@ if (require.main === module && !process.env.VERCEL) {
   initializeDBAndServer();
 }
 
-// Allowed columns for ordering to strictly guard against SQL injection
 const ALLOWED_ORDER_COLUMNS = ['id', 'title', 'author', 'price', 'pages'];
 
-// Root route - Overview of available endpoints and query parameters
 app.get('/', (request, response) => {
   response.status(200).json({
     lab: 'Lab 3: REST API, query parameters, validation, debugging',
@@ -98,7 +92,6 @@ app.get('/', (request, response) => {
   });
 });
 
-// Route 1: GET /books/ - Retrieve books with search, sort, filter, and pagination
 app.get(['/books', '/books/'], async (request, response) => {
   try {
     const {
@@ -111,50 +104,41 @@ app.get(['/books', '/books/'], async (request, response) => {
       max_price
     } = request.query;
 
-    // Validate min_price if provided
     if (min_price !== undefined && (isNaN(Number(min_price)) || Number(min_price) < 0)) {
       return response.status(400).json({
         message: 'Invalid query parameter: min_price must be a valid non-negative number'
       });
     }
 
-    // Validate max_price if provided
     if (max_price !== undefined && (isNaN(Number(max_price)) || Number(max_price) < 0)) {
       return response.status(400).json({
         message: 'Invalid query parameter: max_price must be a valid non-negative number'
       });
     }
 
-    // Validate price range logic if both are provided
     if (min_price !== undefined && max_price !== undefined && Number(min_price) > Number(max_price)) {
       return response.status(400).json({
         message: 'Invalid price range: min_price cannot be greater than max_price'
       });
     }
 
-    // Whitelist and normalize order_by column to prevent SQL injection
     const normalizedOrderBy = ALLOWED_ORDER_COLUMNS.includes(order_by.toLowerCase())
       ? order_by.toLowerCase()
       : 'id';
 
-    // Whitelist and normalize order direction
     const normalizedOrder = order.toUpperCase() === 'DESC' ? 'DESC' : 'ASC';
 
-    // Parse and bound pagination integers
     const parsedLimit = Math.max(1, Math.min(100, parseInt(limit, 10) || 10));
     const parsedOffset = Math.max(0, parseInt(offset, 10) || 0);
 
-    // Build dynamic SQL query with parameterized conditions
     const conditions = [];
     const params = [];
 
-    // Title search filter with SQL LIKE
     if (search_q && search_q.trim() !== '') {
       conditions.push('title LIKE ?');
       params.push(`%${search_q.trim()}%`);
     }
 
-    // Price range filters
     if (min_price !== undefined && max_price !== undefined) {
       conditions.push('price BETWEEN ? AND ?');
       params.push(Number(min_price), Number(max_price));
@@ -188,7 +172,6 @@ app.get(['/books', '/books/'], async (request, response) => {
   }
 });
 
-// Route 2: GET /books/:bookId/ - Retrieve single book by ID
 app.get(['/books/:bookId', '/books/:bookId/'], async (request, response) => {
   try {
     const { bookId } = request.params;
@@ -206,33 +189,28 @@ app.get(['/books/:bookId', '/books/:bookId/'], async (request, response) => {
   }
 });
 
-// Route 3: POST /books/ - Create a new book with robust validation
 app.post(['/books', '/books/'], async (request, response) => {
   try {
     const { title, author, price, pages } = request.body;
 
-    // Validate title (must be non-empty string)
     if (!title || typeof title !== 'string' || title.trim() === '') {
       return response.status(400).json({
         message: 'Invalid title: title is required and cannot be empty'
       });
     }
 
-    // Validate author (must be non-empty string)
     if (!author || typeof author !== 'string' || author.trim() === '') {
       return response.status(400).json({
         message: 'Invalid author: author is required and cannot be empty'
       });
     }
 
-    // Validate price (must be a valid numeric value >= 0)
     if (price === undefined || price === null || isNaN(Number(price)) || Number(price) < 0) {
       return response.status(400).json({
         message: 'Invalid price: price is required and must be a non-negative number'
       });
     }
 
-    // Validate pages (must be a valid integer > 0)
     if (pages === undefined || pages === null || isNaN(Number(pages)) || !Number.isInteger(Number(pages)) || Number(pages) <= 0) {
       return response.status(400).json({
         message: 'Invalid pages: pages is required and must be a positive integer'
@@ -261,19 +239,16 @@ app.post(['/books', '/books/'], async (request, response) => {
   }
 });
 
-// Route 4: PUT /books/:bookId/ - Update an existing book record
 app.put(['/books/:bookId', '/books/:bookId/'], async (request, response) => {
   try {
     const { bookId } = request.params;
     const { title, author, price, pages } = request.body;
 
-    // Check if the book exists first
     const existingBook = await db.get('SELECT * FROM book WHERE id = ?;', [bookId]);
     if (!existingBook) {
       return response.status(404).json({ message: `Book with id ${bookId} not found` });
     }
 
-    // Validate fields if provided
     if (title !== undefined && (typeof title !== 'string' || title.trim() === '')) {
       return response.status(400).json({
         message: 'Invalid title: title cannot be empty'
@@ -320,7 +295,6 @@ app.put(['/books/:bookId', '/books/:bookId/'], async (request, response) => {
   }
 });
 
-// Route 5: DELETE /books/:bookId/ - Remove a book
 app.delete(['/books/:bookId', '/books/:bookId/'], async (request, response) => {
   try {
     const { bookId } = request.params;
@@ -343,7 +317,6 @@ app.delete(['/books/:bookId', '/books/:bookId/'], async (request, response) => {
   }
 });
 
-// 404 Catch-All Handler with consistent message format
 app.use((request, response) => {
   response.status(404).json({ message: 'Endpoint Not Found' });
 });
